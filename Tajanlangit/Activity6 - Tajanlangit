@@ -1,0 +1,30 @@
+/********Ira Jude Tajanlangit BSIS 2 - A*******
+
+Write a java program to find the maximum and minimum value of an array given by the user.
+
+Size of Array is 10
+*/
+
+package activity6;
+
+import java.util.*;
+
+public class Activity6
+{
+    public static void main(String []args)
+    {
+        Scanner sc = new Scanner(System.in);
+        int[] array = new int[10];
+        //Receiving Input
+        System.out.println("* * PRINT 10 INTEGERS * *\n");
+        for (int i = 0; i < array.length; i++)
+        {
+            System.out.print("Please Enter Integer Number " + (i+1) + ": ");
+            array[i] = sc.nextInt();
+        }
+        Arrays.sort(array);
+        //Output
+        System.out.println("\nMinimum Value of the Array is : " + array[0]);
+        System.out.println("Maximum Value of the Array is: " + array[array.length-1]);
+    }
+} 
