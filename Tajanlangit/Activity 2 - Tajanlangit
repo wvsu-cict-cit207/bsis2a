@@ -1,0 +1,42 @@
+/*IRA JUDE TAJANLANGIT BSIS 2A */
+
+package myfirstoperationprogram;
+
+import java.util.Scanner;
+
+public class MyFirstOperationProgram {
+
+ 
+    public static void main(String[] args) {
+        
+        //Declare variables
+        int num1,num2,product,difference,sum,quotient,remainder;
+        
+        System.out.println("Please Enter Two Numbers: ");
+        
+        Scanner sc = new Scanner(System.in);
+        num1 = sc.nextInt();
+        num2 = sc.nextInt();
+        
+        System.out.println("\n");
+        System.out.println("Here are the Results of the Following Operations:\n");
+        
+        //Addition
+        sum = num1 + num2;
+        System.out.println("The Sum of Two Numbers is " + sum + ".");
+        //Subtraction
+        difference = num1 - num2;
+        System.out.println("The Difference of Two Numbers is " + difference + ".");
+        //Multiplication
+        product = num1 * num2;
+        System.out.println("The Product of Two Numbers is " + product + ".");
+        //Division
+        quotient = num1 / num2;
+        System.out.println("The Quotient of Two Numbers is " + quotient + ".");
+        //Remainder
+        remainder = num1 % num2;
+         System.out.println("The Remainder of Two Numbers is " + remainder + ".");
+    
+    }
+    
+}
