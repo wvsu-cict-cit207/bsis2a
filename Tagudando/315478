@@ -1,0 +1,140 @@
+import java.util.Scanner;
+
+class AddressBook {
+//Exercise 10.10.2
+    private  String Name;
+    private  String Address;
+    private  String Mobile_Num;
+    private  String Email_Add;
+
+    AddressBook() {
+
+    }
+    AddressBook(String N,String A,String MN,String EA){
+        Name = N;
+        Address = A;
+        Mobile_Num = MN;
+        Email_Add = EA;
+    }
+
+    String get_Name() {
+        return Name;
+    }
+    String get_Address() {
+        return Address;
+    }
+    String get_Mobile_Number() {
+        return Mobile_Num;
+    }
+    String get_Email_Address() {
+        return Email_Add;
+    }
+
+    void set_Name(String N){
+        Name=N;
+    }
+    void set_Address(String A) {
+        Address=A;
+    }
+    void set_Mobile_Number(String MN) { Mobile_Num= MN; }
+    void set_Email_Address(String EA) {
+        Email_Add= EA;
+    }
+}
+
+class AddBook {
+    public static void main(String[] args) {
+
+        AddressBook book[] = new AddressBook[100];
+        for(int i= 0; i< 100; i++) book[i]= new AddressBook();
+        int size= 0,n= 0;
+        int x;
+
+        Scanner ab = new Scanner(System.in);
+        String s="";
+        while(true){
+            System.out.print("**Main Menu**\n*Choose An Option*\n1) Add Entry\n2) Delete Entry\n3) View All Entries\n4) Update an Entry\n5)Exit\n");
+            x =ab.nextInt();
+
+            if(x==1) {
+                System.out.print("Enter Name of the Person in the Address Book: ");
+                s= ab.next();
+                book[n].set_Name(s);
+
+                System.out.print("Enter Address of the person: ");
+                s= ab.next();
+                book[n].set_Address(s);
+
+                System.out.print("Enter Mobile number of the person: ");
+                s= ab.next();
+                book[n].set_Mobile_Number(s);
+
+                System.out.print("Enter Email address of the person: ");
+                s= ab.next();
+                book[n].set_Email_Address(s);
+                size++;
+                n++;
+            }
+
+            else if(x==2 && size !=0){
+                int m;
+                s="";
+
+                System.out.print("Enter Index to Delete: ");
+                m = ab.nextInt();
+                book[m].set_Name(s);
+                book[m].set_Address(s);
+                book[m].set_Mobile_Number(s);
+                book[m].set_Email_Address(s);
+                size--;
+                System.out.println("Entry Deleted!");
+            }
+
+            else if(x==3 && size !=0) {
+                int i;
+
+                System.out.println("Entries in the Address Book: ");
+                for(i= 0; i< n; i++) {
+                    System.out.println(i);
+                    System.out.println("Name: "+book[i].get_Name());
+                    System.out.println("Address: "+book[i].get_Address());
+                    System.out.println("Mobile Number: "+book[i].get_Mobile_Number());
+                    System.out.println("Email Address: "+book[i].get_Email_Address());
+                }
+            }
+
+            else if(x==4 && size !=0){
+                int m;
+                s="";
+
+                System.out.print("Enter Index to Update: ");
+                m= ab.nextInt();
+
+                System.out.print("Enter Name of the Person in the Address Book: ");
+                s= ab.next();
+                book[m].set_Name(s);
+
+                System.out.print("Enter Address of the Person: ");
+                s= ab.next();
+                book[m].set_Address(s);
+
+                System.out.print("Enter the Mobile number of the Person: ");
+                s= ab.next();
+                book[m].set_Mobile_Number(s);
+
+                System.out.print("Enter the Email Address of the Person: ");
+                s= ab.next();
+                book[m].set_Email_Address(s);
+            }
+
+            else if(x==5) {
+                System.out.println("Thank You for Using!");
+                break;
+            }
+            else{
+                System.out.println("Invalid Input! Please Enter a Valid Choice.");
+            }
+        }
+    }
+
+}
