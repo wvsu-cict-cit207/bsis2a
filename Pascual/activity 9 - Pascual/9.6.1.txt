@@ -1,0 +1,7 @@
+1.Class- a user define that presents set of properties or methods.
+2.Object- is a case of that supports the class.
+3.Instantiate- a call to a constructor that creates an object.
+4.Instance Variable- a declaration in a class.
+5.Instance Method- a method in a class.
+6.Class Variables or static member variables- can be declared with a static modifier.
+7.Constructor- a method to iniatialize objects.
