@@ -1,0 +1,113 @@
+import java.util.Scanner;
+
+
+public class AddressBookTest {
+	public static AddressBook addressArray[] = new AddressBook[100];
+	private static int addressCount=0;
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		while(true)
+		{
+			System.out.println("1. Add Entry");
+			System.out.println("2. Delete Entry");
+			System.out.println("3. View All Entries");
+			System.out.println("4. Update An Entry");
+			System.out.println("5. Exit");
+			System.out.print("Enter your choice : ");
+			int choice = Integer.parseInt(sc.nextLine());
+			switch(choice)
+			{
+			case 1:
+				if(addressCount>=100)
+				{
+					System.out.println("Address Book is filled");
+				}
+				else
+				{
+					System.out.println("Enter Name : ");
+					String name = sc.nextLine();
+					System.out.println("Enter Address : ");
+					String address = sc.nextLine();
+					System.out.println("Enter Telephone number : ");
+					String mobile = sc.nextLine();
+					System.out.println("Enter Email Address: ");
+					String email = sc.nextLine();
+					AddressBook add = new AddressBook(name, address, telephone, email);
+					addressArray[addressCount++] = add;
+				}
+				break;
+			case 2:
+				if(addressCount == 0)
+				{
+					System.out.println("There is no entry in the address book");
+				}
+				else
+				{
+					System.out.println("Enter Name you want to delete");
+					String nameToDelete = sc.nextLine();
+					for(int i=0;i<addressCount;i++)
+					{
+						if(addressArray[i].getName().equalsIgnoreCase(nameToDelete))
+						{
+							addressArray[i] = null;
+							for(int j = i; j<addressCount-1;j++)
+							{
+								addressArray[j] = addressArray[j+1]; 
+							}
+							addressCount--;
+							System.out.println("Address deleted from the address book");
+							break;
+						}
+					}
+				}
+				break;
+			case 3:
+				if(addressCount == 0)
+				{
+					System.out.println("There is no entry in the address book");
+				}
+				else
+				{
+					System.out.println("Below is given the list of address - ");
+					for(int i=0;i<addressCount;i++)
+					{
+					System.out.println("Name - "+addressArray[i].getName()+", Address - "+addressArray[i].getAddress()+", telephone Number - "+addressArray[i].gettelephoneNumber()+", Email - "+addressArray[i].getEmail());
+					}
+				}
+				break;
+			case 4:
+				if(addressCount == 0)
+				{
+					System.out.println("There is no entry in the address book");
+				}
+				else
+				{
+					System.out.println("Enter the name of the address to be update: ");
+					String name = sc.nextLine();
+					for(int i=0;i<addressCount;i++)
+					{
+						if(addressArray[i].getName().equalsIgnoreCase(name))
+						{
+							System.out.println("Enter address : ");
+							String newAdd = sc.nextLine();
+							System.out.println("Enter new telephone number : ");
+							String newMob = sc.nextLine();
+							System.out.println("Enter new Email Address : ");
+							String newEmail = sc.nextLine();
+							addressArray[i].setAddress(newAdd);
+							addressArray[i].setEmail(newEmail);
+							addressArray[i].settelephoneNumber(newtel);
+							System.out.println("Address updated successfully");
+						}
+					}
+				}
+				break;
+			    case 5:
+				return;
+			}
+		}
+		
+	}
+
+
+}
