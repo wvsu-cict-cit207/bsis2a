@@ -1,0 +1,135 @@
+import java.util.Scanner;
+public class AddressBookEntry {
+    //Exercise 10.10.1
+
+    String name[]=new String[2];
+    String address[]=new String[2];
+    String mobile_num[]=new String[2];
+    String email_ad[]=new String[2];
+    static int i;
+
+    void input(){
+        Scanner ab = new Scanner(System.in);
+        System.out.println("Enter the Name");
+        name[i]=ab.nextLine();
+        System.out.println("Enter the Address");
+        address[i]=ab.nextLine();
+        System.out.println("Enter the Mobile Number");
+        mobile_num[i]=ab.nextLine();
+        System.out.println("Enter the Email Address: ");
+        email_ad[i]=ab.nextLine();
+        i=i+1;
+    }
+
+    void delete(String n){
+        int x,y,z;
+        for(y=0;y<2;y++) {
+            if(n.equalsIgnoreCase(name[y]))
+            {
+                x=y;
+                for(z=x; z<2; z++){
+                    name[z]=name[z+1];
+                    address[z]=address[z+1];
+                    mobile_num[z]=mobile_num[z+1];
+                    email_ad[z]=email_ad[z+1];
+                }
+            }
+        }
+    }
+
+    void display(){
+        int j;
+        for(j=0; j<2; j++){
+            System.out.println("Name: " +name[j]);
+            System.out.println("Address: " +address[j]);
+            System.out.println("Mobile Number: " +mobile_num[j]);
+            System.out.println("Email Address: " +email_ad[j]);
+            System.out.println();
+        }
+    }
+
+    void update(String t){
+        Scanner sc=new Scanner(System.in);
+        int k=-1,j;
+
+        for(j=0; j<2; j++) {
+            if(t.equalsIgnoreCase(name[j])) {
+                k=j;
+                System.out.println("Entering New Details");
+                System.out.println("Enter New Name: ");
+                name[k]=sc.nextLine();
+                System.out.println("Enter New Address: ");
+                address[k]=sc.nextLine();
+                System.out.println("Enter New Mobile Number: ");
+                mobile_num[k]=sc.nextLine();
+                System.out.println("Enter New Email Address: ");
+                email_ad[k]=sc.nextLine();
+            }
+        }
+        if(k==-1) {
+            System.out.println("Entry Not Found");
+        }
+
+    }
+    public static void main(String[] args) {
+        int abe;
+
+        Scanner sc=new Scanner(System.in);
+        AddressBookEntry obj=new AddressBookEntry();
+        do{
+            System.out.println("Please Choose an Option: ");
+            System.out.println("1.Add Entry");
+            System.out.println("2.Delete Entry");
+            System.out.println("3.View All Entries");
+            System.out.println("4.Update An Entry");
+            System.out.println("5.Exit");
+
+            abe=sc.nextInt();
+
+            switch(abe) {
+                case 1:
+                    obj.input();
+                    break;
+
+                case 2:
+                    if(i>0){
+                        String nm;
+                        System.out.println("Enter the Name You Want to Delete");
+                        nm=sc.next();
+                        obj.delete(nm);
+                        break;
+                    }
+                    else {
+                        System.out.println("No Entry! Please Add Some Entry First.");
+                        break;
+                    }
+
+                case 3:
+                    System.out.println("Displaying All Entries...");
+                    obj.display();
+                    break;
+
+                case 4:
+                    if(i>0){
+                        String up_nm;
+                        System.out.println("Enter the Name You Want to Update:");
+                        up_nm=sc.next();
+                        obj.update(up_nm);
+                        break;
+                    }
+                    else {
+                        System.out.println("No Entry! Please Add Some Entry First.");
+                        break;
+                    }
+
+                case 5:
+                    System.exit(0);
+
+                default:
+                    System.out.println("Please Enter Valid Option!");
+
+            }
+
+        }while(abe!=5);
+    }
+}
